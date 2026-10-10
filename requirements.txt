@@ -1,0 +1,12 @@
+numpy
+pyyaml
+yt-dlp
+faster-whisper
+opencv-python-headless
+anthropic
+mediapipe
+fastapi
+uvicorn[standard]
+python-multipart
+chat-downloader
+pytest

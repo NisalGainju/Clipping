@@ -1,0 +1,32 @@
+# Any key from clipper/config.py can be set here. CLI flags override this file.
+work_dir: workspace
+
+# --- ingest ---
+max_height: 1080
+cookies_file: null        # path to cookies.txt for age-restricted / bot-checked videos
+fetch_chat: true          # Twitch VOD chat velocity (needs `pip install chat-downloader`)
+
+# --- transcription ---
+whisper_model: small      # GPU: large-v3 or distil-large-v3 | CPU: base / small
+device: auto              # auto | cuda | cpu
+compute_type: auto        # auto -> float16 on GPU, int8 on CPU
+language: null            # null = auto-detect
+
+# --- clip selection ---
+min_clip_s: 20
+max_clip_s: 60
+target_clip_s: 40
+num_clips: null           # null = auto (~1 clip per 7 minutes, clamped 3..25)
+candidate_multiplier: 3   # candidates sent to the LLM = clips * this
+
+# --- LLM scoring ---
+llm_provider: auto        # auto | anthropic | heuristic
+llm_model: claude-sonnet-4-6
+
+# --- render ---
+reframe: true             # face-tracked 16:9 -> 9:16
+captions: true
+caption_style: pop        # pop | clean | boxed
+hook_overlay: true
+music_path: null
+music_volume: 0.12

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "viral-clipper"
+version = "0.1.0"
+description = "Turn long-form videos into ranked, captioned, vertical short-form clips."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "pyyaml",
+  "yt-dlp",
+  "faster-whisper",
+  "opencv-python-headless",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic"]
+vision = ["mediapipe"]
+api = ["fastapi", "uvicorn[standard]", "python-multipart"]
+chat = ["chat-downloader"]
+dev = ["pytest"]
+all = ["anthropic", "mediapipe", "fastapi", "uvicorn[standard]", "python-multipart", "chat-downloader"]
+
+[project.scripts]
+clipper = "clipper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["clipper*"]
+
+[tool.setuptools.package-data]
+clipper = ["api/static/*"]
